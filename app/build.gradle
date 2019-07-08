@@ -4,8 +4,12 @@ apply plugin: 'com.getkeepsafe.dexcount'
 buildscript {
     repositories {
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4"
         classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.5'
     }
 }
@@ -62,7 +66,7 @@ dependencies {
 
 
     // Vungle SDK
-    implementation 'com.github.vungle:vungle-android-sdk:6.4.11'
+    implementation 'vungle-android-beta:publisher-sdk-android:6.4.10'
 
 //    implementation files('libs/vungle-android-sdk-6.4.11.jar')
 //    implementation files('libs/vungle-android-sdk-6.4.11.aar')
