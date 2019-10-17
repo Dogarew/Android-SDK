@@ -15,7 +15,6 @@ import com.vungle.warren.InitCallback;
 import com.vungle.warren.LoadAdCallback;
 import com.vungle.warren.PlayAdCallback;
 import com.vungle.warren.Vungle;
-import com.vungle.warren.error.VungleException;
 
 import java.util.Collection;
 
@@ -110,11 +109,11 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
             }
 
             @Override
-            public void onError(VungleException e) {
+            public void onError(Throwable throwable) {
                 setSpinnerAndProgressbarState(false);
                 setButtonState(true, false, false);
 
-                showToastMessage("SDK Init Error : " + e.getLocalizedMessage());
+                showToastMessage("SDK Init Error : " + throwable.getLocalizedMessage());
             }
 
             @Override
@@ -136,11 +135,11 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
             }
 
             @Override
-            public void onError(String id, VungleException e) {
+            public void onError(String s, Throwable throwable) {
                 setSpinnerAndProgressbarState(false);
                 setButtonState(false, true, false);
 
-                showToastMessage("Ad Load Error : " + e.getLocalizedMessage());
+                showToastMessage("Ad Load Error : " + throwable.getLocalizedMessage());
             }
         });
     }
@@ -162,10 +161,10 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
             }
 
             @Override
-            public void onError(String id, VungleException e) {
+            public void onError(String s, Throwable throwable) {
                 setButtonState(false, true, false);
 
-                showToastMessage("Ad Play Error : " + e.getLocalizedMessage());
+                showToastMessage("Ad Play Error : " + throwable.getLocalizedMessage());
             }
         });
     }
